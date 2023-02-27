@@ -14,7 +14,7 @@
 	<p>React is loaded as a script tag.</p>
 	<hr />
 	<!-- We will put our React component inside this div. -->
-	<div id="like-button-root"></div>
+	<div id="app"></div>
 
 	<!-- Load React. -->
 	<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
@@ -23,59 +23,39 @@
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 	<!-- Load your React component. -->
 	<script type="text/babel">
-		const user = {
-			name: 'Hedy Lamarr',
-			imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-			imageSize: 90,
-			products: [
-				{ title: 'Cabbage', isFruit: false, id: 1 },
-				{ title: 'Garlic', isFruit: false, id: 2 },
-				{ title: 'Apple', isFruit: true, id: 3 }
-			]
-		};
-		function CustomComponent() {
-			const [currentItem, setCurrentItem] = React.useState();
-			const listItems = user.products.map(x =>
-				<MyButton product={x} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
-			);
 
-			const userDom = <>
-				<h1>{user.name}</h1>
-				<img
-					className="avatar"
-					src={user.imageUrl}
-					alt={'Photo of ' + user.name}
-					style={{
-						width: user.imageSize,
-						height: user.imageSize
-					}}
-				/>
-				{listItems}
-			</>;
-
-			return userDom;
-		}
-
-		function MyButton(props) {
-			const { product, currentItem, setCurrentItem } = props;
-			const [count, setCount] = React.useState(0);
-		
-			function handleClick(value) {
-				setCurrentItem(value);
-				setCount(count + 1);
-			}
-
+		//function
+		function Header() {
 			return (
-				<li key={product.id}
-					onClick={() => handleClick(product.id)}
-					style={{
-						color: currentItem == product.id ? 'magenta' : 'darkgreen',
-						cursor: 'pointer'
-					}}
-				>{product.title} "{count}"</li>
-			);
+				<div className="header">Header</div>
+			)
 		}
-		ReactDOM.render(<CustomComponent />, document.getElementById("like-button-root"));
+
+		//class
+		class Content extends React.Component {
+			render() {
+				return (
+					<div className="content">Content</div>
+				)
+			}
+		}
+
+		//function
+		function Footer() {
+			return (
+				<div className="footer">Footer</div>
+			)
+		}
+
+		const app = (
+			<div className="wrapper">
+				<Header />
+				<Content />
+				<Footer />
+			</div>
+		);
+
+		ReactDOM.render(app, document.getElementById("app"));
 	</script>
 </body>
 
