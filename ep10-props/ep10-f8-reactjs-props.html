@@ -27,7 +27,14 @@
 		//function
 		function Header() {
 			return (
-				<div className="header">Header</div>
+				<div className="posts-list">
+					<div className="posts-item">
+						<img src="https://files.fullstack.edu.vn/f8-prod/blog_posts/6626/63fc19cf0ecb7.jpg" alt="Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?" />
+						<h2 className="posts-title">Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?</h2>
+						<p className="posts-desc">Trong những năm gần đây, nghề IT đã trở thành một nghề siêu hot với mức thu nhập được cho là “cực khủng”. Vậy với ngách lập...</p>
+						<p className="posts-publish">12 giờ trước</p>
+					</div>
+				</div>
 			)
 		}
 
@@ -50,11 +57,12 @@
 		const app = (
 			<div className="wrapper">
 				<Header />
+				<Header />
+				<Header />
 				<Content />
 				<Footer />
 			</div>
 		);
-
 		ReactDOM.render(app, document.getElementById("app"));
 	</script>
 </body>
