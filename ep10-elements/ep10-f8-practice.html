@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="">
+	<title>Post item</title>
+</head>
+
+<body>
+	<h2>Add React in One Minute</h2>
+	<hr />
+	<!-- We will put our React component inside this div. -->
+	<div id="app"></div>
+
+	<!-- Load React. -->
+	<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<!-- Load your React component. -->
+	<script type="text/babel">
+
+		//PostItem.js
+		function PostItem() {
+			return (
+				<div className="posts-list">
+					<div className="posts-item">
+						<img src="https://files.fullstack.edu.vn/f8-prod/blog_posts/6626/63fc19cf0ecb7.jpg" alt="Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?" />
+						<h2 className="posts-title">Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?</h2>
+						<p className="posts-desc">Trong những năm gần đây, nghề IT đã trở thành một nghề siêu hot với mức thu nhập được cho là “cực khủng”. Vậy với ngách lập...</p>
+						<p className="posts-publish">12 giờ trước</p>
+					</div>
+				</div>
+			)
+		}
+
+		//App.js
+		function App() {
+			return (
+				<div id="wrapper">
+					<PostItem />
+					<PostItem />
+					<PostItem />
+				</div>
+			)
+		}
+		ReactDOM.render(<App />, document.getElementById("app"));
+	</script>
+</body>
+
+</html>
