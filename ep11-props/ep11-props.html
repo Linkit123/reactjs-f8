@@ -32,7 +32,7 @@
     <!-- Load your React component. -->
     <script type="text/babel">
 
-        //PostItem.js
+        // PostItem.js
         function PostItem(props) {
             console.log(props);
             return (
@@ -50,7 +50,7 @@
             )
         }
 
-        //App.js
+        // App.js
         function App() {
             return (
                 <div id="wrapper">
@@ -77,6 +77,8 @@
                 </div>
             )
         }
+
+        // index.js
         const container = document.getElementById('app');
         const root = ReactDOM.createRoot(container);
         root.render(<App />);
