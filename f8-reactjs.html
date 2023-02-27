@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="">
+	<title>Add React in One Minute</title>
+</head>
+
+<body>
+	<h2>Add React in One Minute</h2>
+	<p>This page demonstrates using React with no build tooling.</p>
+	<p>React is loaded as a script tag.</p>
+	<hr />
+	<!-- We will put our React component inside this div. -->
+	<div id="like-button-root"></div>
+
+	<!-- Load React. -->
+	<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<!-- Load your React component. -->
+	<script type="text/babel">
+		const user = {
+			name: 'Hedy Lamarr',
+			imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+			imageSize: 90,
+			products: [
+				{ title: 'Cabbage', isFruit: false, id: 1 },
+				{ title: 'Garlic', isFruit: false, id: 2 },
+				{ title: 'Apple', isFruit: true, id: 3 }
+			]
+		};
+		function CustomComponent() {
+			const [currentItem, setCurrentItem] = React.useState();
+			const listItems = user.products.map(x =>
+				<MyButton product={x} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+			);
+
+			const userDom = <>
+				<h1>{user.name}</h1>
+				<img
+					className="avatar"
+					src={user.imageUrl}
+					alt={'Photo of ' + user.name}
+					style={{
+						width: user.imageSize,
+						height: user.imageSize
+					}}
+				/>
+				{listItems}
+			</>;
+
+			return userDom;
+		}
+
+		function MyButton(props) {
+			const { product, currentItem, setCurrentItem } = props;
+			const [count, setCount] = React.useState(0);
+		
+			function handleClick(value) {
+				setCurrentItem(value);
+				setCount(count + 1);
+			}
+
+			return (
+				<li key={product.id}
+					onClick={() => handleClick(product.id)}
+					style={{
+						color: currentItem == product.id ? 'magenta' : 'darkgreen',
+						cursor: 'pointer'
+					}}
+				>{product.title} "{count}"</li>
+			);
+		}
+		ReactDOM.render(<CustomComponent />, document.getElementById("like-button-root"));
+	</script>
+</body>
+
+</html>
