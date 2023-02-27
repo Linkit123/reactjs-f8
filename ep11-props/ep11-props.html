@@ -1,12 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <title>Post item with props</title>
 </head>
+<!-- 
+
+    - React element:
+        + sử dụng props giống như với attr của thẻ HTML
+        + 2 props class => className, for => htmlFor
+    - React component:
+        + sử dụng props như 1 đối số cho Component
+        + Tự do đặt tên props
+    - Props "key" là prop đặc biệt
+ -->
+
 <body>
-    
+    <h2>Add React in One Minute</h2>
+    <hr />
+    <!-- We will put our React component inside this div. -->
+    <div id="app"></div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Load your React component. -->
+    <script type="text/babel">
+
+        //PostItem.js
+        function PostItem(props) {
+            console.log(props);
+            return (
+                <>
+                    <div className="posts-list">
+                        <div className="posts-item">
+                            <img src={props.image} />
+                            <h2 className="posts-title">{props.title}</h2>
+                            <p className="posts-desc">{props.description}</p>
+                            <p className="posts-publish">{props.publishedAt}</p>
+                        </div>
+                    </div>
+                    <hr />
+                </>
+            )
+        }
+
+        //App.js
+        function App() {
+            return (
+                <div id="wrapper">
+                    <PostItem
+                        image="https://files.fullstack.edu.vn/f8-prod/blog_posts/6626/63fc19cf0ecb7.jpg"
+                        title="Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?"
+                        description="Trong những năm gần đây, nghề IT đã trở thành một nghề siêu hot với mức thu nhập được cho là “cực khủng”. Vậy với ngách lập..."
+                        publishedAt="12 giờ trước"
+                    />
+
+                    <PostItem
+                        image="https://files.fullstack.edu.vn/f8-prod/blog_posts/6626/63fc19cf0ecb7.jpg"
+                        title="22222 Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?"
+                        description="22222 Trong những năm gần đây, nghề IT đã trở thành một nghề siêu hot với mức thu nhập được cho là “cực khủng”. Vậy với ngách lập..."
+                        publishedAt="1 giờ trước"
+                    />
+
+                    <PostItem
+                        image="https://files.fullstack.edu.vn/f8-prod/blog_posts/6626/63fc19cf0ecb7.jpg"
+                        title="33333 Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?"
+                        description="333333 Trong những năm gần đây, nghề IT đã trở thành một nghề siêu hot với mức thu nhập được cho là “cực khủng”. Vậy với ngách lập..."
+                        publishedAt="2 giờ trước"
+                    />
+                </div>
+            )
+        }
+        const container = document.getElementById('app');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
 </body>
+
 </html>
