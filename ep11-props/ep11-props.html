@@ -33,16 +33,22 @@
     <script type="text/babel">
 
         // PostItem.js
-        function PostItem(props) {
-            console.log(props);
+        function PostItem({
+            image,
+            title,
+            description,
+            publishedAt,
+            callback = () => { }
+        }) {
+            callback(Math.random());
             return (
                 <>
                     <div className="posts-list">
                         <div className="posts-item">
-                            <img src={props.image} />
-                            <h2 className="posts-title">{props.title}</h2>
-                            <p className="posts-desc">{props.description}</p>
-                            <p className="posts-publish">{props.publishedAt}</p>
+                            <img src={image} />
+                            <h2 className="posts-title">{title}</h2>
+                            <p className="posts-desc">{description}</p>
+                            <p className="posts-publish">{publishedAt}</p>
                         </div>
                     </div>
                     <hr />
@@ -59,6 +65,7 @@
                         title="Lương lập trình website cao hay thấp? Cơ hội nghề nghiệp ra sao?"
                         description="Trong những năm gần đây, nghề IT đã trở thành một nghề siêu hot với mức thu nhập được cho là “cực khủng”. Vậy với ngách lập..."
                         publishedAt="12 giờ trước"
+                        callback={(a) => { console.log(a) }}
                     />
 
                     <PostItem
