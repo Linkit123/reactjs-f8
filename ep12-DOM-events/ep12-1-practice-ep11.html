@@ -307,17 +307,16 @@
         ]
 
         // CourseItem.js
-        function CourseItem({ course }) {
+        function CourseItem({ course, onClick }) {
             return (
                 <>
-                    <div className="course-list">
-                        <div className="course-item">
-                            <img src={course.image_url} />
-                            <h2 className="course-title">{course.title}</h2>
-                            <p className="course-desc">{course.description}</p>
-                            <p className="course-publish">{course.published_at}</p>
-                            <p className="course-students-count">{course.students_count}</p>
-                        </div>
+                    <div style={{ backgroundColor: "aliceblue", cursor: "pointer" }}
+                        onClick={() => onClick(course)} className="course-item">
+                        <img src={course.image_url} />
+                        <h2 className="course-title">{course.title}</h2>
+                        <p className="course-desc">{course.description}</p>
+                        <p className="course-publish">{course.published_at}</p>
+                        <p className="course-students-count">{course.students_count}</p>
                     </div>
                     <hr />
                 </>
@@ -326,12 +325,16 @@
 
         // App.js
         function App() {
+            const handleClick = (course) => {
+                console.log(course.title);
+            }
             return (
                 <div id="wrapper">
                     {courses.map(course => (
                         <CourseItem
                             key={course.id}
                             course={course}
+                            onClick={handleClick}
                         />
                     ))}
                 </div>
