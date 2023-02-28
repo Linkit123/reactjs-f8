@@ -307,22 +307,16 @@
         ]
 
         // CourseItem.js
-        function CourseItem({
-            image,
-            title,
-            description,
-            publishedAt,
-            studentCount
-        }) {
+        function CourseItem({ course }) {
             return (
                 <>
                     <div className="course-list">
                         <div className="course-item">
-                            <img src={image} />
-                            <h2 className="course-title">{title}</h2>
-                            <p className="course-desc">{description}</p>
-                            <p className="course-publish">{publishedAt}</p>
-                            <p className="course-students-count">{studentCount}</p>
+                            <img src={course.image_url} />
+                            <h2 className="course-title">{course.title}</h2>
+                            <p className="course-desc">{course.description}</p>
+                            <p className="course-publish">{course.published_at}</p>
+                            <p className="course-students-count">{course.students_count}</p>
                         </div>
                     </div>
                     <hr />
@@ -337,11 +331,7 @@
                     {courses.map(course => (
                         <CourseItem
                             key={course.id}
-                            image={course.image_url}
-                            title={course.title}
-                            description={course.description}
-                            publishedAt={course.published_at}
-                            studentCount={course.students_count}
+                            course={course}
                         />
                     ))}
                 </div>
