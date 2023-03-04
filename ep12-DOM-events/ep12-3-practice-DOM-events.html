@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="">
+    <title>Post item with props</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        h4 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        h5 {
+            margin-top: 0;
+            font-size: 14px;
+        }
+
+        h6 {
+            margin-top: 0;
+            font-size: 12px;
+        }
+
+        code {
+            font-size: 1.2em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        .square {
+            background: #fff;
+            border: 1px solid #999;
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 34px;
+            height: 34px;
+            margin-right: -1px;
+            margin-top: -1px;
+            padding: 0;
+            text-align: center;
+            width: 34px;
+        }
+
+        .board-row:after {
+            clear: both;
+            content: '';
+            display: table;
+        }
+
+        .status {
+            margin-bottom: 10px;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .game-info {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<!-- 
+
+ -->
+
+<body>
+    <h2>tic-tac-toe</h2>
+    <hr />
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+
+
+        function Square({ value, onClickSquare }) {
+            return <button onClick={onClickSquare} className="square">{value}</button>;
+        }
+
+        function Board() {
+            const [squares, setSquares] = React.useState(Array(9).fill(null));
+            function handleClick(i) {
+                const nextSquares = squares.slice();
+                nextSquares[i] = "X";
+                setSquares(nextSquares);
+            }
+            return (
+                <>
+                    <div className="board-row">
+                        <Square value={squares[0]} onClickSquare={() => handleClick(0)} />
+                        <Square value={squares[1]} onClickSquare={() => handleClick(1)} />
+                        <Square value={squares[2]} onClickSquare={() => handleClick(2)} />
+                    </div>
+                    <div className="board-row">
+                        <Square value={squares[3]} onClickSquare={() => handleClick(3)} />
+                        <Square value={squares[4]} onClickSquare={() => handleClick(4)} />
+                        <Square value={squares[5]} onClickSquare={() => handleClick(5)} />
+                    </div>
+                    <div className="board-row">
+                        <Square value={squares[6]} onClickSquare={() => handleClick(6)} />
+                        <Square value={squares[7]} onClickSquare={() => handleClick(7)} />
+                        <Square value={squares[8]} onClickSquare={() => handleClick(8)} />
+                    </div>
+                </>
+            )
+        }
+
+        // App.js
+        function App() {
+            return (
+                <div id="wrapper">
+                    <Board />
+                </div>
+            )
+        }
+
+        // index.js
+        const container = document.getElementById('app');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
