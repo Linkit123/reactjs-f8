@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from 'react-dom/client';
 
 function App() {
-  return <div id="wrapper">heello, dau ma hay zu  ds dcsa sad  </div>;
+  return <div id="wrapper">a du ale, dau ma hay zu  ds dcsa sad  </div>;
 }
 
 const container = document.getElementById('root');
